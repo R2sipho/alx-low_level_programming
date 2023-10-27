@@ -7,25 +7,16 @@
  */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int num, i;
+        int goal;
+        unsigned int aya = 0;
 
-	if (!b || !*b)
-		return (0);
-
-	num = i = 0;
-	while (b[i])
-	{
-		if (b[i] > 49)
-			return (0);
-		else if (b[i] == 49)
-		{
-			num <<= 1;
-			num += 1;
-		}
-		else
-			num <<= 1;
-		i++;
-	}
-	return (num);
+        if (!b)
+                return (0);
+        for (goal = 0; b[goal]; goal++)
+        {
+                if (b[goal] < '0' || b[goal] > '1')
+                        return (0);
+                aya = 2 * aya + (b[goal] - '0');
+        }
+        return (aya);
 }
-
