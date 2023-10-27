@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 /**
  * binary_uint - is a  function that converts  binary numbers to integer.
  * @b: pointers to a string 
@@ -6,22 +7,24 @@
  */
 unsigned int binary_to_uint(const char *b)
 {
-	int a;
-	unsigned int num;
+	unsigned int num, i;
 
-	num = 0;
-	if (!b)
+	if (!b || !*b)
 		return (0);
-	for (a = 0; b[a] != '\0'; a++)
+
+	num = i = 0;
+	while (b[i])
 	{
-		if (b[a] != '0' && b[a] != '1')
+		if (b[i] > 49)
 			return (0);
-	}
-	for (a = 0; b[a] != '\0'; a++)
-	{
-		num <<= 1;
-		if (b[a] == '1')
+		else if (b[i] == 49)
+		{
+			num <<= 1;
 			num += 1;
+		}
+		else
+			num <<= 1;
+		i++;
 	}
 	return (num);
 }
