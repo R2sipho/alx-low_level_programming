@@ -29,7 +29,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
         {
             free(current->value);
             current->value = value_copy;
-            free(value_copy); // Free if key already exists
+            free(value_copy);
             return (1);
         }
     }
